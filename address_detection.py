@@ -13,11 +13,27 @@ rectThinkness = 2
 address_model_xml = "./horizontal-text-detection-0001.xml"
 address_model_bin = "./horizontal-text-detection-0001.bin"
 
+lpr_model_xml = "./license-plate-recognition-barrier-0007.xml"
+lpr_model_bin = "./license-plate-recognition-barrier-0007.bin"
+
 
 device = "CPU"
 
 
-def addressDetection(frame, address_execution_net, address_input_blob):
+def drawText(frame, scale, rectX, rectY, rectColor, text):
+
+    textSize, _ = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, scale, 3)
+
+    top = max(rectY - rectThinkness, textSize[0])
+
+    cv2.putText(
+        frame, text, (rectX, top), cv2.FONT_HERSHEY_SIMPLEX, scale, rectColor, 3
+    )
+
+
+def addressDetection(
+    frame, address_execution_net, address_input_blob, lpr_execution_net, lpr_input_blob
+):
 
     frame_width = frame.shape[1]
     frame_height = frame.shape[0]
@@ -46,6 +62,26 @@ def addressDetection(frame, address_execution_net, address_input_blob):
             xmax = min(xmax + 5, frame_width - 1)
             ymax = min(ymax + 5, frame_height - 1)
 
+            rectW = xmax - xmin
+
+            if rectW > 93:  # Minimal width in plate-recognition-barrier-0001 is 94
+                lpImg = frame[ymin : ymax + 1, xmin : xmax + 1]
+                blob = cv2.dnn.blobFromImage(lpImg, size=(94, 24), ddepth=cv2.CV_8U)
+                lpr_results = lpr_execution_net.infer(
+                    inputs={lpr_input_blob: blob}
+                ).get("d_predictions.0")
+                content = ""
+                for _ in lpr_results[0]:
+                    if _ == -1:
+                        break
+                    elif _ <= 9:
+                        content += str(_)
+                    else:
+                        pass
+                drawText(frame, rectW * 0.008, xmin, ymin, pColor, content)
+            else:
+                print(f"WIDTH < 94 ({rectW})")
+
             cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), pColor, rectThinkness)
 
     showImg = resize(frame, height=750)
@@ -66,13 +102,27 @@ def main():
             network=address_neural_net, device_name=device.upper()
         )
 
+    lpr_neural_net = ie.read_network(model=lpr_model_xml, weights=lpr_model_bin)
+    if lpr_neural_net is not None:
+        lpr_input_blob = next(iter(lpr_neural_net.input_info))
+        lpr_neural_net.batch_size = 1
+        lpr_execution_net = ie.load_network(
+            network=lpr_neural_net, device_name=device.upper()
+        )
+
     for imagePath in paths.list_images(TEST_PATH):
         print(imagePath)
         img = cv2.imread(imagePath)
         if img is None:
             continue
 
-        addressDetection(img, address_execution_net, address_input_blob)
+        addressDetection(
+            img,
+            address_execution_net,
+            address_input_blob,
+            lpr_execution_net,
+            lpr_input_blob,
+        )
         cv2.waitKey(0)
 
 

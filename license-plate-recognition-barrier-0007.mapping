@@ -1,0 +1,651 @@
+<?xml version="1.0"?>
+<mapping>
+	<map>
+		<framework name="input/scale_copy" output_port_id="Conv/weights/read:0" />
+		<IR name="input/scale_copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv/weights/read" output_port_id="Conv/weights/read:0" />
+		<IR name="input/scale_copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="Conv/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv/BatchNorm/FusedBatchNorm" output_port_id="Conv/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv/Relu" output_port_id="Conv/Relu:0" />
+		<IR name="Conv/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv/Relu" output_port_id="Conv/Relu:0" />
+		<IR name="Conv/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="MaxPool2D/MaxPool" output_port_id="MaxPool2D/MaxPool:0" />
+		<IR name="MaxPool2D/MaxPool" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="MaxPool2D/MaxPool" output_port_id="MaxPool2D/MaxPool:0" />
+		<IR name="MaxPool2D/MaxPool" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_1/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="Conv_1/weights/read:0" />
+		<IR name="Conv_1/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_1/weights/read" output_port_id="Conv_1/weights/read:0" />
+		<IR name="Conv_1/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_1/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="Conv_1/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_1/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_1/BatchNorm/FusedBatchNorm" output_port_id="Conv_1/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_1/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_1/Relu" output_port_id="Conv_1/Relu:0" />
+		<IR name="Conv_1/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_1/Relu" output_port_id="Conv_1/Relu:0" />
+		<IR name="Conv_1/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_2/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="Conv_2/weights/read:0" />
+		<IR name="Conv_2/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_2/weights/read" output_port_id="Conv_2/weights/read:0" />
+		<IR name="Conv_2/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_2/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="Conv_2/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_2/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_2/BatchNorm/FusedBatchNorm" output_port_id="Conv_2/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_2/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_2/Relu" output_port_id="Conv_2/Relu:0" />
+		<IR name="Conv_2/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_2/Relu" output_port_id="Conv_2/Relu:0" />
+		<IR name="Conv_2/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_3/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="Conv_3/weights/read:0" />
+		<IR name="Conv_3/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_3/weights/read" output_port_id="Conv_3/weights/read:0" />
+		<IR name="Conv_3/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_3/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="Conv_3/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_3/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_3/BatchNorm/FusedBatchNorm" output_port_id="Conv_3/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_3/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_3/Relu" output_port_id="Conv_3/Relu:0" />
+		<IR name="Conv_3/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_3/Relu" output_port_id="Conv_3/Relu:0" />
+		<IR name="Conv_3/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_4/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="Conv_4/weights/read:0" />
+		<IR name="Conv_4/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_4/weights/read" output_port_id="Conv_4/weights/read:0" />
+		<IR name="Conv_4/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_4/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="Conv_4/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_4/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_4/BatchNorm/FusedBatchNorm" output_port_id="Conv_4/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_4/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_4/Relu" output_port_id="Conv_4/Relu:0" />
+		<IR name="Conv_4/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_4/Relu" output_port_id="Conv_4/Relu:0" />
+		<IR name="Conv_4/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="MaxPool2D_1/MaxPool" output_port_id="MaxPool2D_1/MaxPool:0" />
+		<IR name="MaxPool2D_1/MaxPool" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="MaxPool2D_1/MaxPool" output_port_id="MaxPool2D_1/MaxPool:0" />
+		<IR name="MaxPool2D_1/MaxPool" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_5/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="Conv_5/weights/read:0" />
+		<IR name="Conv_5/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_5/weights/read" output_port_id="Conv_5/weights/read:0" />
+		<IR name="Conv_5/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_5/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="Conv_5/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_5/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_5/BatchNorm/FusedBatchNorm" output_port_id="Conv_5/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_5/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_5/Relu" output_port_id="Conv_5/Relu:0" />
+		<IR name="Conv_5/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_5/Relu" output_port_id="Conv_5/Relu:0" />
+		<IR name="Conv_5/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_6/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="Conv_6/weights/read:0" />
+		<IR name="Conv_6/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_6/weights/read" output_port_id="Conv_6/weights/read:0" />
+		<IR name="Conv_6/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_6/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="Conv_6/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_6/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_6/BatchNorm/FusedBatchNorm" output_port_id="Conv_6/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_6/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_6/Relu" output_port_id="Conv_6/Relu:0" />
+		<IR name="Conv_6/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_6/Relu" output_port_id="Conv_6/Relu:0" />
+		<IR name="Conv_6/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_7/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="Conv_7/weights/read:0" />
+		<IR name="Conv_7/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_7/weights/read" output_port_id="Conv_7/weights/read:0" />
+		<IR name="Conv_7/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_7/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="Conv_7/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_7/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_7/BatchNorm/FusedBatchNorm" output_port_id="Conv_7/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_7/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_7/Relu" output_port_id="Conv_7/Relu:0" />
+		<IR name="Conv_7/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_7/Relu" output_port_id="Conv_7/Relu:0" />
+		<IR name="Conv_7/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_8/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="Conv_8/weights/read:0" />
+		<IR name="Conv_8/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_8/weights/read" output_port_id="Conv_8/weights/read:0" />
+		<IR name="Conv_8/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_8/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="Conv_8/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_8/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_8/BatchNorm/FusedBatchNorm" output_port_id="Conv_8/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_8/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_8/Relu" output_port_id="Conv_8/Relu:0" />
+		<IR name="Conv_8/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_8/Relu" output_port_id="Conv_8/Relu:0" />
+		<IR name="Conv_8/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_9/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="Conv_9/weights/read:0" />
+		<IR name="Conv_9/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_9/weights/read" output_port_id="Conv_9/weights/read:0" />
+		<IR name="Conv_9/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_9/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="Conv_9/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_9/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_9/BatchNorm/FusedBatchNorm" output_port_id="Conv_9/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_9/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_9/Relu" output_port_id="Conv_9/Relu:0" />
+		<IR name="Conv_9/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_9/Relu" output_port_id="Conv_9/Relu:0" />
+		<IR name="Conv_9/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_10/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="Conv_10/weights/read:0" />
+		<IR name="Conv_10/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_10/weights/read" output_port_id="Conv_10/weights/read:0" />
+		<IR name="Conv_10/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_10/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="Conv_10/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_10/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_10/BatchNorm/FusedBatchNorm" output_port_id="Conv_10/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_10/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_10/Relu" output_port_id="Conv_10/Relu:0" />
+		<IR name="Conv_10/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_10/Relu" output_port_id="Conv_10/Relu:0" />
+		<IR name="Conv_10/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_11/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="Conv_11/weights/read:0" />
+		<IR name="Conv_11/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_11/weights/read" output_port_id="Conv_11/weights/read:0" />
+		<IR name="Conv_11/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_11/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="Conv_11/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_11/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_11/BatchNorm/FusedBatchNorm" output_port_id="Conv_11/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_11/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_11/Relu" output_port_id="Conv_11/Relu:0" />
+		<IR name="Conv_11/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_11/Relu" output_port_id="Conv_11/Relu:0" />
+		<IR name="Conv_11/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_12/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="Conv_12/weights/read:0" />
+		<IR name="Conv_12/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_12/weights/read" output_port_id="Conv_12/weights/read:0" />
+		<IR name="Conv_12/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_12/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="Conv_12/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_12/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_12/BatchNorm/FusedBatchNorm" output_port_id="Conv_12/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_12/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_12/Relu" output_port_id="Conv_12/Relu:0" />
+		<IR name="Conv_12/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_12/Relu" output_port_id="Conv_12/Relu:0" />
+		<IR name="Conv_12/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="MaxPool2D_2/MaxPool" output_port_id="MaxPool2D_2/MaxPool:0" />
+		<IR name="MaxPool2D_2/MaxPool" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="MaxPool2D_2/MaxPool" output_port_id="MaxPool2D_2/MaxPool:0" />
+		<IR name="MaxPool2D_2/MaxPool" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Dropout/Identity" output_port_id="MaxPool2D_2/MaxPool:0" />
+		<IR name="MaxPool2D_2/MaxPool" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="MaxPool2D_2/MaxPool" output_port_id="Dropout/Identity:0" />
+		<IR name="MaxPool2D_2/MaxPool" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="MaxPool2D_2/MaxPool" output_port_id="Dropout/Identity:0" />
+		<IR name="MaxPool2D_2/MaxPool" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Dropout/Identity" output_port_id="Dropout/Identity:0" />
+		<IR name="MaxPool2D_2/MaxPool" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_13/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="Conv_13/weights/read:0" />
+		<IR name="Conv_13/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_13/weights/read" output_port_id="Conv_13/weights/read:0" />
+		<IR name="Conv_13/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_13/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="Conv_13/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_13/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_13/BatchNorm/FusedBatchNorm" output_port_id="Conv_13/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_13/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_13/Relu" output_port_id="Dropout_1/Identity:0" />
+		<IR name="Conv_13/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Dropout_1/Identity" output_port_id="Dropout_1/Identity:0" />
+		<IR name="Conv_13/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_13/Relu" output_port_id="Dropout_1/Identity:0" />
+		<IR name="Conv_13/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_13/Relu" output_port_id="Conv_13/Relu:0" />
+		<IR name="Conv_13/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Dropout_1/Identity" output_port_id="Conv_13/Relu:0" />
+		<IR name="Conv_13/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_13/Relu" output_port_id="Conv_13/Relu:0" />
+		<IR name="Conv_13/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Conv_14/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="Conv_14/weights/read:0" />
+		<IR name="Conv_14/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_14/weights/read" output_port_id="Conv_14/weights/read:0" />
+		<IR name="Conv_14/BatchNorm/FusedBatchNorm/mean/Fused_Mul__copy" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_14/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="Conv_14/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_14/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_14/BatchNorm/FusedBatchNorm" output_port_id="Conv_14/BatchNorm/FusedBatchNorm:0" />
+		<IR name="Conv_14/BatchNorm/FusedBatchNorm/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_14/Relu/Transpose" output_port_id="Conv_14/Relu:0" />
+		<IR name="Conv_14/Relu/Transpose" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_14/Relu" output_port_id="Conv_14/Relu:0" />
+		<IR name="Conv_14/Relu/Transpose" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Flatten/flatten/Reshape" output_port_id="Flatten/flatten/Reshape:0" />
+		<IR name="Flatten/flatten/Reshape" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Flatten/flatten/Reshape" output_port_id="Flatten/flatten/Reshape:0" />
+		<IR name="Flatten/flatten/Reshape" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="fully_connected/weights/read" output_port_id="fully_connected/weights/read:0" />
+		<IR name="fully_connected/weights/read" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="fully_connected/weights/read" output_port_id="fully_connected/weights/read:0" />
+		<IR name="fully_connected/weights/read" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="fully_connected/MatMul" output_port_id="fully_connected/MatMul:0" />
+		<IR name="fully_connected/MatMul" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="fully_connected/MatMul" output_port_id="fully_connected/MatMul:0" />
+		<IR name="fully_connected/MatMul" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="fully_connected/BatchNorm/Reshape/shape" output_port_id="fully_connected/BatchNorm/Reshape/shape:0" />
+		<IR name="fully_connected/BatchNorm/Reshape/shape" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="fully_connected/BatchNorm/Reshape/shape" output_port_id="fully_connected/BatchNorm/Reshape/shape:0" />
+		<IR name="fully_connected/BatchNorm/Reshape/shape" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="fully_connected/BatchNorm/Reshape/Transpose" output_port_id="fully_connected/BatchNorm/Reshape:0" />
+		<IR name="fully_connected/BatchNorm/Reshape/Transpose" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="fully_connected/BatchNorm/Reshape" output_port_id="fully_connected/BatchNorm/Reshape:0" />
+		<IR name="fully_connected/BatchNorm/Reshape/Transpose" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="fully_connected/BatchNorm/FusedBatchNorm/variance/Fused_Add_/Transpose" output_port_id="fully_connected/BatchNorm/FusedBatchNorm:0" />
+		<IR name="fully_connected/BatchNorm/FusedBatchNorm/variance/Fused_Add_/Transpose" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="fully_connected/BatchNorm/FusedBatchNorm" output_port_id="fully_connected/BatchNorm/FusedBatchNorm:0" />
+		<IR name="fully_connected/BatchNorm/FusedBatchNorm/variance/Fused_Add_/Transpose" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="fully_connected/BatchNorm/Reshape_1/Cast_1" output_port_id="fully_connected/BatchNorm/Shape:0" />
+		<IR name="fully_connected/BatchNorm/Reshape_1/Cast_1" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="fully_connected/BatchNorm/Shape" output_port_id="fully_connected/BatchNorm/Shape:0" />
+		<IR name="fully_connected/BatchNorm/Reshape_1/Cast_1" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="fully_connected/BatchNorm/Reshape_1" output_port_id="fully_connected/BatchNorm/Reshape_1:0" />
+		<IR name="fully_connected/BatchNorm/Reshape_1" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="fully_connected/BatchNorm/Reshape_1" output_port_id="fully_connected/BatchNorm/Reshape_1:0" />
+		<IR name="fully_connected/BatchNorm/Reshape_1" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="fully_connected/Relu" output_port_id="fully_connected/Relu:0" />
+		<IR name="fully_connected/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="fully_connected/Relu" output_port_id="fully_connected/Relu:0" />
+		<IR name="fully_connected/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Reshape/shape" output_port_id="Reshape/shape:0" />
+		<IR name="Reshape/shape" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Reshape/shape" output_port_id="Reshape/shape:0" />
+		<IR name="Reshape/shape" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Reshape/Transpose" output_port_id="Reshape:0" />
+		<IR name="Reshape/Transpose" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Reshape" output_port_id="Reshape:0" />
+		<IR name="Reshape/Transpose" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Tile" output_port_id="Tile:0" />
+		<IR name="Tile" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Tile" output_port_id="Tile:0" />
+		<IR name="Tile" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="concat" output_port_id="concat:0" />
+		<IR name="concat" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="concat" output_port_id="concat:0" />
+		<IR name="concat" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_15/weights/read" output_port_id="Conv_15/weights/read:0" />
+		<IR name="Conv_15/weights/read" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_15/weights/read" output_port_id="Conv_15/weights/read:0" />
+		<IR name="Conv_15/weights/read" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_15/Conv2D" output_port_id="Conv_15/Conv2D:0" />
+		<IR name="Conv_15/Conv2D" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_15/Conv2D" output_port_id="Conv_15/Conv2D:0" />
+		<IR name="Conv_15/Conv2D" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Conv_15/biases/read" output_port_id="Conv_15/biases/read:0" />
+		<IR name="Conv_15/biases/read" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Conv_15/biases/read" output_port_id="Conv_15/biases/read:0" />
+		<IR name="Conv_15/biases/read" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="Squeeze_332" output_port_id="Squeeze:0" />
+		<IR name="Squeeze_332" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Squeeze" output_port_id="Squeeze:0" />
+		<IR name="Squeeze_332" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="Shape_1" output_port_id="Shape_1:0" />
+		<IR name="Shape_1" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Shape_1" output_port_id="Shape_1:0" />
+		<IR name="Shape_1" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="strided_slice_1/stack" output_port_id="strided_slice_1/stack:0" />
+		<IR name="strided_slice_1/stack" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="strided_slice_1/stack" output_port_id="strided_slice_1/stack:0" />
+		<IR name="strided_slice_1/stack" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="strided_slice_1/stack_1" output_port_id="strided_slice_1/stack_1:0" />
+		<IR name="strided_slice_1/stack_1" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="strided_slice_1/stack_1" output_port_id="strided_slice_1/stack_1:0" />
+		<IR name="strided_slice_1/stack_1" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="strided_slice_1/stack_2" output_port_id="strided_slice_1/stack_2:0" />
+		<IR name="strided_slice_1/stack_2" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="strided_slice_1/stack_2" output_port_id="strided_slice_1/stack_2:0" />
+		<IR name="strided_slice_1/stack_2" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="strided_slice_1" output_port_id="strided_slice_1:0" />
+		<IR name="strided_slice_1" output_port_id="4" />
+	</map>
+	<map>
+		<framework name="strided_slice_1" output_port_id="strided_slice_1:0" />
+		<IR name="strided_slice_1" output_port_id="4" />
+	</map>
+	<map>
+		<framework name="Shape" output_port_id="Shape:0" />
+		<IR name="Shape" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Shape" output_port_id="Shape:0" />
+		<IR name="Shape" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="strided_slice/stack" output_port_id="strided_slice/stack:0" />
+		<IR name="strided_slice/stack" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="strided_slice/stack" output_port_id="strided_slice/stack:0" />
+		<IR name="strided_slice/stack" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="strided_slice/stack_1" output_port_id="strided_slice/stack_1:0" />
+		<IR name="strided_slice/stack_1" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="strided_slice/stack_1" output_port_id="strided_slice/stack_1:0" />
+		<IR name="strided_slice/stack_1" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="strided_slice/stack_2" output_port_id="strided_slice/stack_2:0" />
+		<IR name="strided_slice/stack_2" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="strided_slice/stack_2" output_port_id="strided_slice/stack_2:0" />
+		<IR name="strided_slice/stack_2" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="strided_slice" output_port_id="strided_slice:0" />
+		<IR name="strided_slice" output_port_id="4" />
+	</map>
+	<map>
+		<framework name="strided_slice" output_port_id="strided_slice:0" />
+		<IR name="strided_slice" output_port_id="4" />
+	</map>
+	<map>
+		<framework name="Fill/Broadcast/Cast_1" output_port_id="Fill/dims:0" />
+		<IR name="Fill/Broadcast/Cast_1" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Fill/dims" output_port_id="Fill/dims:0" />
+		<IR name="Fill/Broadcast/Cast_1" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="d_predictions" output_port_id="d_predictions:0" />
+		<IR name="d_predictions" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="d_predictions" output_port_id="d_predictions:0" />
+		<IR name="d_predictions" output_port_id="2" />
+	</map>
+</mapping>
