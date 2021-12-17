@@ -9,12 +9,14 @@ MODEL_FRAME_SIZE = 704
 pColor = (0, 0, 255)
 rectThinkness = 2
 
+alpha_numeric_symbols = "0123456789abcdefghijklmnopqrstuvwxyz#"
+
 
 address_model_xml = "./horizontal-text-detection-0001.xml"
 address_model_bin = "./horizontal-text-detection-0001.bin"
 
-lpr_model_xml = "./license-plate-recognition-barrier-0007.xml"
-lpr_model_bin = "./license-plate-recognition-barrier-0007.bin"
+tr_model_xml = "./text-recognition-0012.xml"
+tr_model_bin = "./text-recognition-0012.bin"
 
 
 device = "CPU"
@@ -32,7 +34,7 @@ def drawText(frame, scale, rectX, rectY, rectColor, text):
 
 
 def addressDetection(
-    frame, address_execution_net, address_input_blob, lpr_execution_net, lpr_input_blob
+    frame, address_execution_net, address_input_blob, tr_execution_net, tr_input_blob
 ):
 
     frame_width = frame.shape[1]
@@ -49,7 +51,7 @@ def addressDetection(
         for detection in address_results:
             if detection[0] == 0:
                 break
-            print(detection)
+            # print(detection)
             conf = detection[4]
             if conf < CONF:
                 continue
@@ -61,26 +63,30 @@ def addressDetection(
             ymin = max(0, ymin - 5)
             xmax = min(xmax + 5, frame_width - 1)
             ymax = min(ymax + 5, frame_height - 1)
-
+            trImg = frame[ymin : ymax + 1, xmin : xmax + 1]
+            gray_image = cv2.cvtColor(trImg, cv2.COLOR_BGR2GRAY)
+            blob = cv2.dnn.blobFromImage(gray_image, size=(120, 32), ddepth=cv2.CV_8U)
+            tr_results = tr_execution_net.infer(inputs={tr_input_blob: blob}).get(
+                "shadow/LSTMLayers/transpose_time_major"
+            )
+            for char_probs in tr_results:
+                max_value = max(char_probs)
+                print("MAXIMO: ", max_value)
+                # max_index = char_probs.index(max_value)
+                # print(alpha_numeric_symbols[max_index])
+            # print("TEXT RECOGNITION: ", tr_results)
+            """
             rectW = xmax - xmin
-
-            if rectW > 93:  # Minimal width in plate-recognition-barrier-0001 is 94
-                lpImg = frame[ymin : ymax + 1, xmin : xmax + 1]
-                blob = cv2.dnn.blobFromImage(lpImg, size=(94, 24), ddepth=cv2.CV_8U)
-                lpr_results = lpr_execution_net.infer(
-                    inputs={lpr_input_blob: blob}
-                ).get("d_predictions.0")
-                content = ""
-                for _ in lpr_results[0]:
-                    if _ == -1:
-                        break
-                    elif _ <= 9:
-                        content += str(_)
-                    else:
-                        pass
-                drawText(frame, rectW * 0.008, xmin, ymin, pColor, content)
-            else:
-                print(f"WIDTH < 94 ({rectW})")
+            content = ""
+            for _ in tr_results[0]:
+                if _ == -1:
+                    break
+                elif _ <= 9:
+                    content += str(_)
+                else:
+                    pass
+            drawText(frame, rectW * 0.008, xmin, ymin, pColor, content)
+            """
 
             cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), pColor, rectThinkness)
 
@@ -102,12 +108,12 @@ def main():
             network=address_neural_net, device_name=device.upper()
         )
 
-    lpr_neural_net = ie.read_network(model=lpr_model_xml, weights=lpr_model_bin)
-    if lpr_neural_net is not None:
-        lpr_input_blob = next(iter(lpr_neural_net.input_info))
-        lpr_neural_net.batch_size = 1
-        lpr_execution_net = ie.load_network(
-            network=lpr_neural_net, device_name=device.upper()
+    tr_neural_net = ie.read_network(model=tr_model_xml, weights=tr_model_bin)
+    if tr_neural_net is not None:
+        tr_input_blob = next(iter(tr_neural_net.input_info))
+        tr_neural_net.batch_size = 1
+        tr_execution_net = ie.load_network(
+            network=tr_neural_net, device_name=device.upper()
         )
 
     for imagePath in paths.list_images(TEST_PATH):
@@ -120,8 +126,8 @@ def main():
             img,
             address_execution_net,
             address_input_blob,
-            lpr_execution_net,
-            lpr_input_blob,
+            tr_execution_net,
+            tr_input_blob,
         )
         cv2.waitKey(0)
 
