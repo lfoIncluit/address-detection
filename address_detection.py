@@ -1,4 +1,6 @@
 import cv2
+from ngraph import ctc_greedy_decoder
+from numpy import fromstring, where
 from openvino.inference_engine import IECore
 from imutils import paths, resize
 
@@ -7,16 +9,16 @@ CONF = 0.4
 MODEL_FRAME_SIZE = 704
 
 pColor = (0, 0, 255)
-rectThinkness = 2
+rectThinkness = 1
 
-alpha_numeric_symbols = "0123456789abcdefghijklmnopqrstuvwxyz#"
+alpha_numeric_symbols = "#1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
 address_model_xml = "./horizontal-text-detection-0001.xml"
 address_model_bin = "./horizontal-text-detection-0001.bin"
 
-tr_model_xml = "./text-recognition-0012.xml"
-tr_model_bin = "./text-recognition-0012.bin"
+tr_model_xml = "./text-recognition-0014.xml"
+tr_model_bin = "./text-recognition-0014.bin"
 
 
 device = "CPU"
@@ -31,6 +33,16 @@ def drawText(frame, scale, rectX, rectY, rectColor, text):
     cv2.putText(
         frame, text, (rectX, top), cv2.FONT_HERSHEY_SIMPLEX, scale, rectColor, 3
     )
+
+
+def ctc_greedy_decoder(results):
+    content = ""
+    for element in results:
+        _max = max(element[0])
+        _max_index = int(where(element[0] == _max)[0])
+        if _max_index != 0:
+            content += alpha_numeric_symbols[_max_index]
+    return content
 
 
 def addressDetection(
@@ -51,7 +63,6 @@ def addressDetection(
         for detection in address_results:
             if detection[0] == 0:
                 break
-            # print(detection)
             conf = detection[4]
             if conf < CONF:
                 continue
@@ -65,28 +76,14 @@ def addressDetection(
             ymax = min(ymax + 5, frame_height - 1)
             trImg = frame[ymin : ymax + 1, xmin : xmax + 1]
             gray_image = cv2.cvtColor(trImg, cv2.COLOR_BGR2GRAY)
-            blob = cv2.dnn.blobFromImage(gray_image, size=(120, 32), ddepth=cv2.CV_8U)
+            blob = cv2.dnn.blobFromImage(gray_image, size=(128, 32), ddepth=cv2.CV_8U)
             tr_results = tr_execution_net.infer(inputs={tr_input_blob: blob}).get(
-                "shadow/LSTMLayers/transpose_time_major"
+                "logits"
             )
-            for char_probs in tr_results:
-                max_value = max(char_probs)
-                print("MAXIMO: ", max_value)
-                # max_index = char_probs.index(max_value)
-                # print(alpha_numeric_symbols[max_index])
-            # print("TEXT RECOGNITION: ", tr_results)
-            """
             rectW = xmax - xmin
-            content = ""
-            for _ in tr_results[0]:
-                if _ == -1:
-                    break
-                elif _ <= 9:
-                    content += str(_)
-                else:
-                    pass
+            content = ctc_greedy_decoder(tr_results)
+            print("CONTENT: ", content)
             drawText(frame, rectW * 0.008, xmin, ymin, pColor, content)
-            """
 
             cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), pColor, rectThinkness)
 
@@ -107,6 +104,8 @@ def main():
         address_execution_net = ie.load_network(
             network=address_neural_net, device_name=device.upper()
         )
+
+    print(address_neural_net.input_info[address_input_blob].input_data.shape)
 
     tr_neural_net = ie.read_network(model=tr_model_xml, weights=tr_model_bin)
     if tr_neural_net is not None:
